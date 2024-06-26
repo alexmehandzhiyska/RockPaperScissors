@@ -2,12 +2,18 @@
 {
     internal class Program
     {
+        const string ROCK_TEXT = "Rock";
+        const string PAPER_TEXT = "Paper";
+        const string SCISSORS_TEXT = "Scissors";
         static void Main(string[] args)
         {
-            const string ROCK_TEXT = "Rock";
-            const string PAPER_TEXT = "Paper";
-            const string SCISSORS_TEXT = "Scissors";
+            string userMove = GetUserMove();
+            string computerMove = GetComputerMove();
 
+            PrintWinner(userMove, computerMove);
+        }
+        static string GetUserMove()
+        {
             // Read user's move
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine("Choose [r]ock, [p]aper, or [s]cissors: ");
@@ -30,8 +36,11 @@
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine($"The user chose {userMove}");
 
-            // Generate computer's move
-
+            return userMove;
+        }
+    
+        static string GetComputerMove()
+        {
             // Generate random number for the move
             Random random = new Random();
             int computerMoveNumber = random.Next(1, 4);
@@ -56,9 +65,11 @@
 
 
             Console.WriteLine($"The computer chose {computerMove}");
-
-            // Compare moves and print winner
-
+            return computerMove;
+        }
+    
+        static void PrintWinner(string userMove, string computerMove)
+        {
             if (
                 (userMove == ROCK_TEXT && computerMove == SCISSORS_TEXT) ||
                 (userMove == PAPER_TEXT && computerMove == ROCK_TEXT) ||
