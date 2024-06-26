@@ -9,7 +9,9 @@
             const string SCISSORS_TEXT = "Scissors";
 
             // Read user's move
+            Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine("Choose [r]ock, [p]aper, or [s]cissors: ");
+            Console.ResetColor();
             string userMove = Console.ReadLine().ToLower();
 
             if (userMove == "r" || userMove == "rock")
@@ -25,6 +27,7 @@
                 userMove = SCISSORS_TEXT;
             }
 
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine($"The user chose {userMove}");
 
             // Generate computer's move
@@ -51,6 +54,7 @@
                     break;
             }
 
+
             Console.WriteLine($"The computer chose {computerMove}");
 
             // Compare moves and print winner
@@ -61,6 +65,7 @@
                 (userMove == SCISSORS_TEXT && computerMove == PAPER_TEXT)
             )
             {
+                Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("You win.");
             }
             else if (
@@ -69,12 +74,16 @@
                 (userMove == SCISSORS_TEXT && computerMove == ROCK_TEXT)
             )
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("You lose.");
             }
             else
             {
+                Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine("This game was a draw.");
             }
+
+            Console.ResetColor();
         }
     }
 }
