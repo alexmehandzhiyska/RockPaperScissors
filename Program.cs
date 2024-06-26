@@ -7,10 +7,27 @@
         const string SCISSORS_TEXT = "Scissors";
         static void Main(string[] args)
         {
-            string userMove = GetUserMove();
-            string computerMove = GetComputerMove();
+            bool playAgain = true;
 
-            PrintWinner(userMove, computerMove);
+            while (playAgain)
+            {
+                string userMove = GetUserMove();
+                string computerMove = GetComputerMove();
+
+                PrintWinner(userMove, computerMove);
+
+                Console.WriteLine("Write [yes] to play again or [no] to stop: ");
+                string answer = Console.ReadLine();
+
+                if (answer == "yes")
+                {
+                    playAgain = true;
+                }
+                else
+                {
+                    playAgain = false;
+                }
+            }
         }
         static string GetUserMove()
         {
